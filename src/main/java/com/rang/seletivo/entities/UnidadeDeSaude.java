@@ -3,6 +3,7 @@ package com.rang.seletivo.entities;
 import java.io.Serializable;
 import java.util.Objects;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -16,19 +17,23 @@ public class UnidadeDeSaude implements Serializable{
 	private static final long serialVersionUID = 1L;
 	
 	@Id 
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	private Long id;
+	@Column(name = "cnes")
 	private String cnes;
+	
+	@Column(name = "nome_do_estabelecimento")
 	private String nomeDoEstabelecimento;
+	
+	@Column(name = "cep_inicio")
 	private Integer cepInicio;
+	
+	@Column(name = "cep_fim")
 	private Integer cepFim;
 	
 	public UnidadeDeSaude() {
 		
 	}
 	
-	public UnidadeDeSaude(Long id, String cnes, String nomeDoEstabelecimento, Integer cepInicio, Integer cepFim) {
-		this.id = id;
+	public UnidadeDeSaude(String cnes, String nomeDoEstabelecimento, Integer cepInicio, Integer cepFim) {
 		this.cnes = cnes;
 		this.nomeDoEstabelecimento = nomeDoEstabelecimento;
 		this.cepInicio = cepInicio;
@@ -67,14 +72,6 @@ public class UnidadeDeSaude implements Serializable{
 		this.cepFim = cepFim;
 	}
 	
-	public Long getId() {
-		return id;
-	}
-
-	public void setId(Long id) {
-		this.id = id;
-	}
-
 	@Override
 	public int hashCode() {
 		return Objects.hash(cnes);
